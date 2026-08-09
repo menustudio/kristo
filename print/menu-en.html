@@ -29,7 +29,7 @@ body { font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -web
 .cover .where { font-family:"Tajawal"; font-style:normal; font-size:3.4mm; letter-spacing:.06em; opacity:.85; }
 
 /* ---------- sections ---------- */
-.cat { break-inside:auto; margin-block-end:6mm; }
+.cat { break-inside:auto; margin-block-end:4.5mm; }
 .cat__title { font-family:"Aref Ruqaa",serif; font-size:7.5mm; line-height:1.7; font-weight:700; color:var(--deep);
   border-block-end:.6mm solid var(--red); padding-block-end:1.5mm; margin-block-end:3.5mm;
   display:flex; align-items:baseline; justify-content:space-between; break-after:avoid; }
@@ -37,7 +37,7 @@ body { font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -web
 
 .dishes { list-style:none; columns:2; column-gap:7mm; }
 .dish { break-inside:avoid; display:flex; gap:3mm; align-items:flex-start;
-  padding-block:2.2mm; border-block-end:.2mm solid var(--line); }
+  padding-block:1.8mm; border-block-end:.2mm solid var(--line); }
 .thumb { flex:0 0 auto; width:19mm; height:19mm; border-radius:2mm; overflow:hidden; background:var(--paper); }
 .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 .thumb__mark { display:block; width:100%; height:100%;
@@ -54,15 +54,21 @@ body { font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -web
 .size em { font-style:normal; font-size:2.4mm; }
 
 /* ---------- drinks ---------- */
-/* keep the drinks list whole: split across a page break it left one page
-   nearly empty */
-.cat--drinks { break-inside:avoid; }
-.drinks { list-style:none; columns:3; column-gap:6mm; }
-.drink { break-inside:avoid; display:flex; justify-content:space-between; align-items:baseline; gap:2mm;
-  padding-block:1.5mm; border-block-end:.2mm solid var(--line); font-size:3.2mm; }
-.drink b { font-size:3.6mm; }
+/* the drinks list rides along at the foot of the desserts page: four tight
+   columns fit the whole list in the space that is left, so no drink ever
+   costs a page of its own */
+.cat--drinks { margin-block-start:2mm; }
+.cat--drinks .cat__title { font-size:6mm; margin-block-end:2.5mm; padding-block-end:1mm; }
+/* grid, not CSS columns: a multicol block inside break-inside:avoid gets
+   measured pessimistically by Chrome and is pushed to its own page */
+.drinks { list-style:none; display:grid; grid-template-columns:repeat(4,1fr);
+  column-gap:5mm; align-content:start; }
+.drink { break-inside:avoid; display:flex; justify-content:space-between; align-items:baseline; gap:1.5mm;
+  padding-block:1mm; border-block-end:.2mm solid var(--line); font-size:2.8mm; }
+.drink b { font-size:3.2mm; }
+.cat--drinks .price { font-size:2.3mm; }
 
-.foot { margin-block-start:5mm; padding-block-start:3mm; border-block-start:.3mm solid var(--line);
+.foot { margin-block-start:3mm; padding-block-start:2mm; border-block-start:.3mm solid var(--line);
   text-align:center; font-size:2.8mm; color:var(--soft); letter-spacing:.04em; }
 </style>
 </head>
