@@ -22,11 +22,17 @@ body { font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -web
 .cover { height:266mm; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:7mm; background:var(--turq); color:#fff; break-after:page; text-align:center; }
 .cover + .cat { margin-block-start:0; }
-.cover img { width:74mm; height:74mm; object-fit:cover;
+.cover__logo { width:64mm; height:64mm; object-fit:cover;
   -webkit-mask-image:radial-gradient(closest-side,#000 58%,transparent 98%); mask-image:radial-gradient(closest-side,#000 58%,transparent 98%); }
-.cover h1 { font-family:"Aref Ruqaa",serif; font-size:19mm; line-height:1.5; font-weight:700; }
+.cover h1 { font-family:"Aref Ruqaa",serif; font-size:17mm; line-height:1.5; font-weight:700; }
 .cover p { font-family:"Cormorant",serif; font-style:italic; font-size:5mm; letter-spacing:.1em; opacity:.92; }
 .cover .where { font-family:"Tajawal"; font-style:normal; font-size:3.4mm; letter-spacing:.06em; opacity:.85; }
+/* the code lives on the cover: a guest can carry the menu to the table or
+   open it on their own phone for delivery */
+.cover__qr { margin-block-start:3mm; padding:3.5mm; background:#fff; border-radius:3mm; line-height:0; }
+.cover__qr img { width:32mm; height:32mm; display:block; image-rendering:pixelated; }
+.cover .scan { font-family:"Tajawal"; font-style:normal; font-weight:700; font-size:3.6mm;
+  letter-spacing:.02em; opacity:.95; }
 
 /* ---------- sections ---------- */
 .cat { break-inside:auto; margin-block-end:4.5mm; }
@@ -74,10 +80,14 @@ body { font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -web
 </head>
 <body>
   <div class="cover">
-    <img src="/assets/logo/logo-emblem.webp" alt="">
+    <img class="cover__logo" src="/assets/logo/logo-emblem.webp" alt="">
     <h1>كريستو</h1>
     <p>مطبخ لبناني أصيل</p>
     <p class="where">حي المصيف، الرياض</p>
+    <div class="cover__qr">
+      <img src="/print/_qr.png" alt="">
+    </div>
+    <p class="scan">امسح الكود للمنيو الإلكتروني</p>
   </div>
   
     <section class="cat">

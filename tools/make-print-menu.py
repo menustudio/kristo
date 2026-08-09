@@ -53,7 +53,17 @@ def price_html(value, lang):
     return ""                    # no price on file → print nothing, never a 0
 
 
-def build_html(lang: str) -> str:
+def write_qr(url: str) -> str:
+    """Plain black-on-white code for the cover — printed small, so max error
+    correction and no logo overlay."""
+    import segno
+    OUT_DIR.mkdir(exist_ok=True)
+    segno.make(url, error="h").save(OUT_DIR / "_qr.png", scale=20, border=0,
+                                    dark="#171512", light="#FFFFFF")
+    return "/print/_qr.png"
+
+
+def build_html(lang: str, menu_url: str) -> str:
     menu, prices, cats = load("menu.json"), load("prices.json"), load("categories.json")
     brand = load("brand.json")
     rtl = lang == "ar"
@@ -128,11 +138,17 @@ body {{ font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -we
 .cover {{ height:266mm; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:7mm; background:var(--turq); color:#fff; break-after:page; text-align:center; }}
 .cover + .cat {{ margin-block-start:0; }}
-.cover img {{ width:74mm; height:74mm; object-fit:cover;
+.cover__logo {{ width:64mm; height:64mm; object-fit:cover;
   -webkit-mask-image:radial-gradient(closest-side,#000 58%,transparent 98%); mask-image:radial-gradient(closest-side,#000 58%,transparent 98%); }}
-.cover h1 {{ font-family:"Aref Ruqaa",serif; font-size:19mm; line-height:1.5; font-weight:700; }}
+.cover h1 {{ font-family:"Aref Ruqaa",serif; font-size:17mm; line-height:1.5; font-weight:700; }}
 .cover p {{ font-family:"Cormorant",serif; font-style:italic; font-size:5mm; letter-spacing:.1em; opacity:.92; }}
 .cover .where {{ font-family:"Tajawal"; font-style:normal; font-size:3.4mm; letter-spacing:.06em; opacity:.85; }}
+/* the code lives on the cover: a guest can carry the menu to the table or
+   open it on their own phone for delivery */
+.cover__qr {{ margin-block-start:3mm; padding:3.5mm; background:#fff; border-radius:3mm; line-height:0; }}
+.cover__qr img {{ width:32mm; height:32mm; display:block; image-rendering:pixelated; }}
+.cover .scan {{ font-family:"Tajawal"; font-style:normal; font-weight:700; font-size:3.6mm;
+  letter-spacing:.02em; opacity:.95; }}
 
 /* ---------- sections ---------- */
 .cat {{ break-inside:auto; margin-block-end:4.5mm; }}
@@ -180,10 +196,14 @@ body {{ font-family:"Tajawal",sans-serif; color:var(--ink); background:#fff; -we
 </head>
 <body>
   <div class="cover">
-    <img src="/assets/logo/logo-emblem.webp" alt="">
+    <img class="cover__logo" src="/assets/logo/logo-emblem.webp" alt="">
     <h1>{title}</h1>
     <p>{tagline}</p>
     <p class="where">{where}</p>
+    <div class="cover__qr">
+      <img src="{write_qr(menu_url)}" alt="">
+    </div>
+    <p class="scan">{'امسح الكود للمنيو الإلكتروني' if rtl else 'Scan for the digital menu'}</p>
   </div>
   {''.join(sections)}
   {drinks_block}
@@ -197,6 +217,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang", default="ar", choices=["ar", "en"])
     ap.add_argument("--port", type=int, default=4177)
+    ap.add_argument("--menu-url", default="https://menustudio.github.io/kristo/?lang=ar",
+                    help="what the cover QR points at")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
@@ -206,7 +228,7 @@ def main():
 
     OUT_DIR.mkdir(exist_ok=True)
     page = OUT_DIR / f"menu-{args.lang}.html"
-    page.write_text(build_html(args.lang), encoding="utf-8")
+    page.write_text(build_html(args.lang, args.menu_url), encoding="utf-8")
 
     out_pdf = Path(args.out) if args.out else (ROOT.parent / "kristo-print" / f"kristo-menu-{args.lang}.pdf")
     out_pdf.parent.mkdir(parents=True, exist_ok=True)
