@@ -13,14 +13,20 @@
       "dishes": [
         {
           "name": {
-            "ar": "بازيلا باللحم",
-            "en": "Bazella w Lahme"
+            "ar": "شيخ المحشي",
+            "en": "Sheikh el Mahshi"
           }
         },
         {
           "name": {
-            "ar": "سمك بالزعفران",
-            "en": "Saffron Fish"
+            "ar": "دجاج بالزبدة",
+            "en": "Butter Chicken"
+          }
+        },
+        {
+          "name": {
+            "ar": "سمك بالليمون والخردل",
+            "en": "Lemon Mustard Fish"
           }
         }
       ]
@@ -35,20 +41,20 @@
       "dishes": [
         {
           "name": {
-            "ar": "داوود باشا",
-            "en": "Daoud Basha"
+            "ar": "سوفليه",
+            "en": "Soufflé"
           }
         },
         {
           "name": {
-            "ar": "دجاج كايجن",
-            "en": "Cajun Chicken"
+            "ar": "كبسة بالدجاج",
+            "en": "Chicken Kabsa"
           }
         },
         {
           "name": {
-            "ar": "باستا ألفريدو",
-            "en": "Alfredo Pasta"
+            "ar": "باستا بالصلصة الزهرية",
+            "en": "Pink Sauce Pasta"
           }
         }
       ]
@@ -63,20 +69,20 @@
       "dishes": [
         {
           "name": {
-            "ar": "شيخ الكوسى",
-            "en": "Sheikh el Koussa"
+            "ar": "بيني بولونيز",
+            "en": "Penne Bolognese"
           }
         },
         {
           "name": {
-            "ar": "فاهيتا دجاج",
-            "en": "Chicken Fajita"
+            "ar": "دجاج وبطاطا بالفرن",
+            "en": "Oven Chicken & Potatoes"
           }
         },
         {
           "name": {
-            "ar": "بايلا سمك",
-            "en": "Seafood Paella"
+            "ar": "سمك بالبرتقال",
+            "en": "Orange Fish"
           }
         }
       ]
@@ -91,14 +97,20 @@
       "dishes": [
         {
           "name": {
-            "ar": "يخنة لحمة",
-            "en": "Beef Yakhne"
+            "ar": "ميل فوي بالخضار واللحم",
+            "en": "Mille-Feuille with Beef & Vegetables"
           }
         },
         {
           "name": {
-            "ar": "باستا بالخضار",
-            "en": "Vegetable Pasta"
+            "ar": "ماندي دجاج",
+            "en": "Mandi Chicken"
+          }
+        },
+        {
+          "name": {
+            "ar": "نودلز بالدجاج والكاجو",
+            "en": "Chicken & Cashew Noodles"
           }
         }
       ]
@@ -113,14 +125,20 @@
       "dishes": [
         {
           "name": {
-            "ar": "دجاج بيستو",
-            "en": "Pesto Chicken"
+            "ar": "كفتة وبطاطا",
+            "en": "Kafta w Batata"
           }
         },
         {
           "name": {
-            "ar": "صيادية",
-            "en": "Sayadieh"
+            "ar": "كباب دجاج",
+            "en": "Chicken Kabab"
+          }
+        },
+        {
+          "name": {
+            "ar": "فيش أند تشيبس",
+            "en": "Fish & Chips"
           }
         }
       ]
