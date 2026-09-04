@@ -2729,6 +2729,140 @@
       "image": "dessert-fruit-salad",
       "background": "ink",
       "vegetarian": true
+    },
+    {
+      "id": "shawarma-small",
+      "category": "shawarma",
+      "name": {
+        "en": "Small Shawarma",
+        "ar": "شاورما صغير"
+      },
+      "subtitle": {
+        "en": "A quick, honest bite",
+        "ar": "لقمة سريعة وصادقة"
+      },
+      "description": {
+        "en": "Shawarma, garlic, pickles and fries in Lebanese bread",
+        "ar": "شاورما، ثوم، مخلل وبطاطا بالخبز اللبناني"
+      },
+      "ingredients": {
+        "en": [
+          "Shawarma",
+          "Garlic",
+          "Pickles",
+          "Fries"
+        ],
+        "ar": [
+          "شاورما",
+          "ثوم",
+          "مخلل",
+          "بطاطا"
+        ]
+      },
+      "calories": 380,
+      "image": "shawarma-small",
+      "background": "ember"
+    },
+    {
+      "id": "shawarma-saj",
+      "category": "shawarma",
+      "name": {
+        "en": "Saj Shawarma",
+        "ar": "شاورما صاج"
+      },
+      "subtitle": {
+        "en": "Rolled thin on the saj",
+        "ar": "ملفوفة رفيعة على الصاج"
+      },
+      "description": {
+        "en": "Shawarma, garlic, pickles and fries rolled in thin saj bread",
+        "ar": "شاورما، ثوم، مخلل وبطاطا ملفوفة بخبز الصاج الرقيق"
+      },
+      "ingredients": {
+        "en": [
+          "Shawarma",
+          "Garlic",
+          "Pickles",
+          "Fries",
+          "Saj bread"
+        ],
+        "ar": [
+          "شاورما",
+          "ثوم",
+          "مخلل",
+          "بطاطا",
+          "خبز صاج"
+        ]
+      },
+      "calories": 430,
+      "image": "shawarma-saj",
+      "background": "paper"
+    },
+    {
+      "id": "shawarma-arabi",
+      "category": "shawarma",
+      "name": {
+        "en": "Arabic Shawarma",
+        "ar": "شاورما عربي"
+      },
+      "subtitle": {
+        "en": "The full-size classic",
+        "ar": "الكلاسيكية بالحجم الكامل"
+      },
+      "description": {
+        "en": "A generous shawarma with garlic, pickles and fries in Arabic bread",
+        "ar": "شاورما دسمة مع ثوم ومخلل وبطاطا بالخبز العربي"
+      },
+      "ingredients": {
+        "en": [
+          "Shawarma",
+          "Garlic",
+          "Pickles",
+          "Fries",
+          "Arabic bread"
+        ],
+        "ar": [
+          "شاورما",
+          "ثوم",
+          "مخلل",
+          "بطاطا",
+          "خبز عربي"
+        ]
+      },
+      "calories": 520,
+      "image": "shawarma-arabi",
+      "background": "mist"
+    },
+    {
+      "id": "broasted",
+      "category": "broasted",
+      "name": {
+        "en": "Broasted",
+        "ar": "بروستد"
+      },
+      "subtitle": {
+        "en": "Crisp outside, tender inside",
+        "ar": "مقرمش من برّا، طري من جوّا"
+      },
+      "description": {
+        "en": "Crispy fried chicken pieces served with fries and garlic",
+        "ar": "قطع دجاج مقرمشة مقلية مع بطاطا وثومية"
+      },
+      "ingredients": {
+        "en": [
+          "Broasted chicken",
+          "Fries",
+          "Garlic"
+        ],
+        "ar": [
+          "دجاج بروستد",
+          "بطاطا",
+          "ثومية"
+        ]
+      },
+      "calories": 700,
+      "image": "broasted",
+      "background": "ember"
     }
   ],
   "drinks": [

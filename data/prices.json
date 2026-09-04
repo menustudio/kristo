@@ -14,7 +14,7 @@
   "pizza-peperoni": 26,
   "pizza-vegetarian": 24,
   "pizza-classic": 24,
-  "pizza-kristo": 18,
+  "pizza-kristo": 28,
   "pizza-chicken": 26,
   "pizza-ranch": 26,
   "sandwich-halloum": 16,
@@ -111,6 +111,25 @@
         "en": "24 pieces"
       },
       "price": 64
+    }
+  ],
+  "shawarma-small": 7,
+  "shawarma-saj": 12,
+  "shawarma-arabi": 19,
+  "broasted": [
+    {
+      "label": {
+        "ar": "٤ حبات",
+        "en": "4 pieces"
+      },
+      "price": 22
+    },
+    {
+      "label": {
+        "ar": "٨ حبات",
+        "en": "8 pieces"
+      },
+      "price": 34
     }
   ]
 }

@@ -125,8 +125,28 @@
     }
   },
   {
-    "id": "platters",
+    "id": "shawarma",
     "order": 6,
+    "label": {
+      "en": "Shawarma",
+      "ar": "الشاورما"
+    },
+    "mood": "ember",
+    "ornament": "fork-knife",
+    "intro": {
+      "title": {
+        "ar": "الشاورما",
+        "en": "Shawarma"
+      },
+      "subtitle": {
+        "en": "Off the spit, wrapped warm",
+        "ar": "من على السيخ، ملفوفة ودافئة"
+      }
+    }
+  },
+  {
+    "id": "platters",
+    "order": 7,
     "label": {
       "en": "BBQ Platters",
       "ar": "صحون المشاوي"
@@ -146,7 +166,7 @@
   },
   {
     "id": "burgers",
-    "order": 7,
+    "order": 8,
     "label": {
       "en": "Burgers",
       "ar": "البرغر"
@@ -166,7 +186,7 @@
   },
   {
     "id": "pizza",
-    "order": 8,
+    "order": 9,
     "label": {
       "en": "Pizza",
       "ar": "البيتزا"
@@ -186,7 +206,7 @@
   },
   {
     "id": "hot",
-    "order": 9,
+    "order": 10,
     "label": {
       "en": "Hot Appetizers",
       "ar": "المقبلات الساخنة"
@@ -205,8 +225,28 @@
     }
   },
   {
+    "id": "broasted",
+    "order": 11,
+    "label": {
+      "en": "Broasted",
+      "ar": "البروستد"
+    },
+    "mood": "mist",
+    "ornament": "chili",
+    "intro": {
+      "title": {
+        "ar": "البروستد",
+        "en": "Broasted"
+      },
+      "subtitle": {
+        "en": "Golden, crisp, straight from the fryer",
+        "ar": "ذهبي ومقرمش من المقلاة مباشرة"
+      }
+    }
+  },
+  {
     "id": "desserts",
-    "order": 10,
+    "order": 12,
     "label": {
       "en": "Desserts",
       "ar": "الحلويات"
