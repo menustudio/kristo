@@ -2322,40 +2322,6 @@
       "presentation": "card"
     },
     {
-      "id": "bbq-asbet-djeij",
-      "category": "bbq",
-      "name": {
-        "en": "Asbet Djeij",
-        "ar": "ساندويش قصبة دجاج"
-      },
-      "subtitle": {
-        "en": "An old-school delicacy",
-        "ar": "أكلة زمان الأصيلة"
-      },
-      "description": {
-        "en": "chicken liver, garlic, tomato, pickles.",
-        "ar": "قصبة دجاج، ثوم، طماطم، مخلل بالخبزة العربية"
-      },
-      "ingredients": {
-        "en": [
-          "Chicken liver",
-          "Garlic",
-          "Tomato",
-          "Pickles"
-        ],
-        "ar": [
-          "قصبة دجاج",
-          "ثوم",
-          "طماطم",
-          "مخلل"
-        ]
-      },
-      "calories": 415,
-      "image": "bbq-asbet-djeij",
-      "background": "ink",
-      "presentation": "card"
-    },
-    {
       "id": "platter-mix-grill",
       "category": "platters",
       "name": {
