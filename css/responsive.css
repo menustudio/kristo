@@ -30,7 +30,7 @@
   .dish__order { min-block-size: 52px; }
 
   /* keep the last row clear of the floating sections button */
-  .dish, .drinks, .daily, .cat-intro, .order, .closing, .welcome {
+  .dish, .drinks, .daily, .cat-intro, .order, .closing, .welcome, .promo {
     padding-block-end: calc(var(--s8) + env(safe-area-inset-bottom));
   }
   .swipe-hint { inset-block-end: calc(var(--s7) + env(safe-area-inset-bottom)); }
@@ -167,4 +167,16 @@
   .rail { display: none; }
   .welcome { flex-direction: row; gap: var(--s5); }
   .welcome__figure { inline-size: min(30vh, 24vw); }
+}
+
+/* A live promo adds a full-width tile to the hero grid. On phones that extra
+   row would push the last tiles off the screen, so while the offer runs the
+   daily tile goes back to half width (the promo owns the full-row slot), the
+   grid tightens, the logo trims, and the decorative swipe hint steps aside —
+   fifteen tiles already say "scroll". Everything reverts when it expires. */
+@media (max-width: 1023.98px) {
+  body[data-promo] .hero__cat--daily { grid-column: auto; }
+  body[data-promo] .hero__cats { gap: var(--s1); }
+  body[data-promo] .hero__logo { inline-size: min(50vw, 26svh); }
+  body[data-promo] .hero .swipe-hint { display: none; }
 }

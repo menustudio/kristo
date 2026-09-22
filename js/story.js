@@ -77,6 +77,27 @@ export function buildWelcome() {
   return s;
 }
 
+/* ---------- 1b. Promo — a time-boxed offer, first thing after the cover ---------- */
+export function buildPromo(promo) {
+  if (!promo) return null;
+  const s = section("promo", promo.mood || "paper", promo.label, "promo");
+  // the campaign poster already carries its own copy, price and dates —
+  // the screen shows it whole and adds nothing but the order button
+  s.innerHTML = `
+    ${textureHTML(promo.texture || "OFFER")}
+    <figure class="promo__figure" data-enter="photo" data-enter-at="0.06">
+      <div class="dish__breathe">
+        <img class="promo__img" alt="${t(promo.label)}" loading="lazy" decoding="async">
+      </div>
+    </figure>
+    <button class="btn btn--primary promo__order" type="button" data-enter="rise" data-enter-at="0.3">${t("order")}</button>`;
+  const img = $(".promo__img", s);
+  img.dataset.image = promo.image || "promo";
+  img.dataset.dir = "assets/images/promo/";
+  img.dataset.sizes = "(min-width:1024px) 40vw, 92vw";
+  return s;
+}
+
 /* ---------- 2. Category intro — one poster screen per category ---------- */
 export function buildCategoryIntro(cat) {
   const intro = cat.intro || {};

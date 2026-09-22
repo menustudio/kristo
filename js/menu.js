@@ -23,6 +23,17 @@ export function getSignatureDish() {
   return data.dishes.find((d) => d.signature) ?? data.dishes.find((d) => d.chefChoice) ?? null;
 }
 
+/* a promo is a time-boxed screen, shown only inside [from, until]. Both
+   stamps carry an explicit offset (+03:00) so a guest's device timezone never
+   shifts the window — Riyadh midnight is Riyadh midnight on every phone. */
+export function promoActive(promo, now = Date.now()) {
+  if (!promo?.id) return false;
+  const from = promo.from ? Date.parse(promo.from) : -Infinity;
+  const until = promo.until ? Date.parse(promo.until) : Infinity;
+  if (Number.isNaN(from) || Number.isNaN(until)) return false;
+  return now >= from && now <= until;
+}
+
 /* data/ is split per file so each concern stays editable on its own:
    brand.json (identity) · social.json (links) · settings.json (order apps)
    categories.json · menu.json (dishes/drinks) · prices.json (id → price) */
@@ -42,7 +53,7 @@ async function fetchJSON(path, optional = false) {
 }
 
 export async function loadData() {
-  const [brand, social, settings, categories, menuData, prices, daily] = await Promise.all([
+  const [brand, social, settings, categories, menuData, prices, daily, promo] = await Promise.all([
     fetchJSON("data/brand.json", true),
     fetchJSON("data/social.json", true),
     fetchJSON("data/settings.json", true),
@@ -50,6 +61,7 @@ export async function loadData() {
     fetchJSON("data/menu.json"),
     fetchJSON("data/prices.json", true),
     fetchJSON("data/daily.json", true),
+    fetchJSON("data/promo.json", true),
   ]);
   data = menuData;
   data.restaurant = {
@@ -59,6 +71,8 @@ export async function loadData() {
   };
   data.categories = (categories || []).slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   data.daily = daily || null;
+  // an expired (or not-yet-started) promo is simply absent — no screen, no tile
+  data.promo = promoActive(promo) ? promo : null;
   /* a price is either a number, or a list of sized options:
      [{ label: {ar,en}, price: 34 }, …] — used for share platters */
   const priceOf = (id) => {
@@ -109,6 +123,8 @@ export function render() {
     main.append(node);
   };
 
+  // lets CSS make room on the hero while an offer is live (and only then)
+  document.body.toggleAttribute("data-promo", Boolean(data.promo));
   renderHeroCategories();
 
   const catLabel = (id) => {
@@ -117,6 +133,16 @@ export function render() {
   };
   const tpl = $("#dish-template");
   const favs = new Set(storage.get("kristo:favorites", []));
+
+  // a live promo is the first thing after the cover — one swipe from the QR
+  if (data.promo) {
+    const node = story.buildPromo(data.promo);
+    if (node) {
+      append(node, "promo");
+      const btn = $(".promo__order", node);
+      btn?.addEventListener("click", () => openSheet({ name: data.promo.label }, btn));
+    }
+  }
 
   if (st) append(story.buildWelcome(), "welcome");
 
@@ -160,6 +186,16 @@ function renderHeroCategories() {
   wrap.innerHTML = "";
   const hasDishes = (catId) => data.dishes.some((d) => d.category === catId);
 
+  // the live offer leads the grid, full width, in the poster-red voice
+  if (data.promo) {
+    const tile = document.createElement("button");
+    tile.type = "button";
+    tile.className = "hero__cat hero__cat--promo";
+    tile.dataset.goto = "promo";
+    tile.textContent = t(data.promo.label);
+    wrap.append(tile);
+  }
+
   (data.categories || []).forEach((cat) => {
     if (!hasDishes(cat.id) && !cat.alwaysShow) return;
     const tile = document.createElement("button");
@@ -196,6 +232,7 @@ function renderCatBar() {
     bar.append(b);
   };
 
+  if (data.promo) chip(t(data.promo.label), "promo", " catbar__chip--promo");
   (data.categories || []).forEach((cat) => {
     const has = data.dishes.some((d) => d.category === cat.id);
     if (!has && !cat.alwaysShow) return;
@@ -219,6 +256,7 @@ function renderSectionsSheet() {
     b.textContent = label;
     list.append(b);
   };
+  if (data.promo) row(t(data.promo.label), "promo", " sections-sheet__item--promo");
   (data.categories || []).forEach((cat) => {
     const has = data.dishes.some((d) => d.category === cat.id);
     if (!has && !cat.alwaysShow) return;

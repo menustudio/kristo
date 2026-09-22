@@ -419,3 +419,51 @@ html.js-motion .hero .swipe-hint { opacity: 0; }
   color: var(--red-deep);
   background: color-mix(in srgb, var(--red) 6%, transparent);
 }
+
+/* ---------- promo — a time-boxed offer, first thing after the cover ---------- */
+.promo {
+  justify-content: center;
+  gap: var(--s3);
+  padding-block-start: calc(var(--nav-h) + var(--catbar-h));
+}
+/* the campaign poster is portrait (4:5) and shown whole — its width follows
+   whatever height is left under the bars and above the button, so it is the
+   largest it can be on every phone without ever cropping */
+.promo__figure {
+  position: relative; z-index: 1;
+  /* 10.5rem = phone bottom padding (s8) + the order button + one gap */
+  inline-size: min(92vw, calc((100svh - var(--nav-h) - var(--catbar-h) - 10.5rem) * .8), 34rem);
+  aspect-ratio: 4 / 5;
+  flex: 0 0 auto;
+}
+.promo__img {
+  inline-size: 100%; block-size: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow:
+    0 12px 28px -14px rgba(16, 24, 22, .5),
+    0 44px 90px -30px rgba(16, 24, 22, .4);
+  background: var(--surface);
+}
+.promo__order { position: relative; z-index: 2; min-inline-size: 11rem; }
+
+/* the live offer gets the loudest voice in every switcher */
+.hero__cat--promo {
+  grid-column: 1 / -1;
+  border: 1.5px solid var(--red);
+  background: var(--red);
+  color: #FFF7F2;
+  box-shadow: 0 10px 22px -12px rgba(216, 53, 44, .55);
+}
+.hero__cat--promo:hover { background: var(--red-deep); border-color: var(--red-deep); }
+.catbar__chip--promo[aria-current="false"] {
+  color: var(--red-deep);
+  border-color: var(--red);
+  background: color-mix(in srgb, var(--red) 10%, var(--paper));
+}
+.sections-sheet__item--promo {
+  grid-column: 1 / -1;
+  background: var(--red);
+  border-color: var(--red);
+  color: #FFF7F2;
+}

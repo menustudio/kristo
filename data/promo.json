@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "_README": "عرض مؤقت يظهر كأول شاشة بعد الغلاف — البوستر نفسه كاملاً + زر اطلب. يظهر فقط بين from و until (توقيت الرياض +03:00) ويختفي وحده بعدها؛ لإيقافه قبل موعده قدّم until أو امسح الملف. image = اسم الملف في assets/images/promo/ بدون امتداد.",
+  "id": "national-day",
+  "from": "2026-09-22T00:00:00+03:00",
+  "until": "2026-09-26T23:59:59+03:00",
+  "label": { "ar": "عرض اليوم الوطني", "en": "National Day Offer" },
+  "image": "national-day",
+  "texture": "SAUDI",
+  "mood": "paper"
+}
